@@ -6,6 +6,7 @@ containerDiv.style.width = `${LENGTH}px`;
 
 let canvasColor = "#3caea3";
 let BACKGROUND = "#FFE4C4";
+let FOREGROUND = "#3caea3";
 
 let dimensions = 16;
 createGrid();
@@ -27,14 +28,20 @@ submit.addEventListener('click', () => {
 // Color picker functionality
 colorPicker = document.querySelector('.color-picker input');
 colorPicker.addEventListener('input', function() {
+    let divs = document.querySelectorAll('.element');
+    divs.forEach((div) => {
+    div.removeEventListener('mouseover', excHover); });
     canvasColor = colorPicker.value;
 })
 
 // Erasor functionality
 erasor = document.querySelector('.btn.b');
 erasor.addEventListener('click', function() {
+    let divs = document.querySelectorAll('.element');
+    divs.forEach((div) => {
+    div.removeEventListener('mouseover', excHover); });
     console.log('huhuh');
-    canvasColor = "bisque";
+    canvasColor = BACKGROUND;
 })
 
 // Clear functionality 
@@ -42,7 +49,7 @@ clear = document.querySelector('.btn.c');
 clear.addEventListener('click', function() {
     let divs = document.querySelectorAll('.element');
     divs.forEach((div) => {
-        div.style.backgroundColor = "bisque";
+        div.style.backgroundColor = BACKGROUND;
 });
 });
 
@@ -50,15 +57,17 @@ clear.addEventListener('click', function() {
 random = document.querySelector('.btn.d');
 random.addEventListener('click', randomColor);
 function randomColor() {
+    random.classList.add('on');
         let divs = document.querySelectorAll('.element');
         divs.forEach((div) => {
-        div.addEventListener('mouseover', () => {
-            // canvasColor
-            div.style.backgroundColor  = `#${Math.floor(Math.random()*16777215).toString(16)}`;
-        });
+        div.addEventListener('mouseover', excHover);
     })
 };
 
+function excHover(evt) {
+    console.log(evt.path[0]);
+    evt.path[0].style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+}
 
 function createGrid() {
     console.log(dimensions);
@@ -69,7 +78,7 @@ function createGrid() {
         for (let j = 0; j < dimensions; j++) {
 
             const node = document.createElement("div");
-            node.style.backgroundColor = "bisque";//"bisque"; /*IMP!*/
+            node.style.backgroundColor = BACKGROUND;//"bisque"; /*IMP!*/
             node.classList.add('element');
             //node.style.borderStyle = "solid";
             node.style.height = `${LENGTH/dimensions}px`;
@@ -83,7 +92,11 @@ function hover() {
     let divs = document.querySelectorAll('.element');
     divs.forEach((div) => {
     div.addEventListener('mouseover', () => {
-        console.log(`here! ${canvasColor}`);
-        div.style.backgroundColor = canvasColor;
+            console.log(`here! ${canvasColor} `);
+            div.style.backgroundColor = canvasColor;
     });
-})};
+})}; 
+
+
+
+// div.removeEventListener('mouseover', excHover);
