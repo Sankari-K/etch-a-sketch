@@ -1,12 +1,15 @@
 // creating the square grid
 let containerDiv = document.querySelector('.container');
 const LENGTH = 600;
-containerDiv.style.height = "600px";
-containerDiv.style.width = "600px";
+containerDiv.style.height = `${LENGTH}px`;
+containerDiv.style.width = `${LENGTH}px`;
 
-let submit = document.querySelector('button');
- 
-let dimensions;
+let canvasColor = "#3caea3";
+let dimensions = 16;
+createGrid();
+hover();
+
+let submit = document.querySelector('button.btn.a');
 submit.addEventListener('click', () => {
     // Erase previous grid if exists
     while (containerDiv.firstChild) {
@@ -14,6 +17,34 @@ submit.addEventListener('click', () => {
       }
     // Create new grid
     dimensions = document.querySelector('input#size').value;
+    createGrid();
+    // Hover over the cells
+   hover(); 
+});
+
+// Color picker functionality
+colorPicker = document.querySelector('.color-picker input');
+colorPicker.addEventListener('input', function() {
+    canvasColor = colorPicker.value;
+})
+
+// Erasor functionality
+erasor = document.querySelector('.btn.b');
+erasor.addEventListener('click', function() {
+    canvasColor = "bisque";
+})
+
+// Clear functionality 
+clear = document.querySelector('.btn.c');
+clear.addEventListener('click', function() {
+    let divs = document.querySelectorAll('.element');
+    divs.forEach((div) => {
+        div.style.backgroundColor = "bisque";
+});
+});
+
+
+function createGrid() {
     console.log(dimensions);
     for(let i = 0; i < dimensions; i++) {
         let row = document.createElement("div");
@@ -22,7 +53,7 @@ submit.addEventListener('click', () => {
         for (let j = 0; j < dimensions; j++) {
 
             const node = document.createElement("div");
-            node.style.backgroundColor = "#3caea3";
+            node.style.backgroundColor = "bisque";//"bisque"; /*IMP!*/
             node.classList.add('element');
             //node.style.borderStyle = "solid";
             node.style.height = `${LENGTH/dimensions}px`;
@@ -30,13 +61,12 @@ submit.addEventListener('click', () => {
             row.appendChild(node);
         }
     }
-    // Hover over the cells
+}
+
+function hover() {
     let divs = document.querySelectorAll('.element');
     divs.forEach((div) => {
     div.addEventListener('mouseover', () => {
-        div.style.backgroundColor = 'bisque';
+        div.style.backgroundColor = canvasColor;
     });
-});
-
-})
-
+})};

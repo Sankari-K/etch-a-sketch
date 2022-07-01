@@ -2,11 +2,13 @@
 
 * {
     font-family: 'Poppins', sans-serif;
+    font-size: 20px;
 }
 
 h1 {
     color: #ffccac;
     text-align: center;
+    font-size: 35px;
 }
 
 .options {
@@ -16,11 +18,15 @@ h1 {
 }
 
 .options > div {
-    margin-top: 20px;;
+    margin-top: 20px;
 }
 
 .body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+
+.container {
+    border: 2px solid;
 }
