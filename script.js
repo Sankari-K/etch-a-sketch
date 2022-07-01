@@ -13,7 +13,7 @@ submit.addEventListener('click', () => {
         containerDiv.removeChild(containerDiv.lastChild);
       }
     // Create new grid
-    dimensions = document.querySelector('input').value;
+    dimensions = document.querySelector('input#size').value;
     console.log(dimensions);
     for(let i = 0; i < dimensions; i++) {
         let row = document.createElement("div");
@@ -24,7 +24,7 @@ submit.addEventListener('click', () => {
             const node = document.createElement("div");
             node.style.backgroundColor = "#3caea3";
             node.classList.add('element');
-            //node.style.margin = "1px";
+            //node.style.borderStyle = "solid";
             node.style.height = `${LENGTH/dimensions}px`;
             node.style.width = `${LENGTH/dimensions}px`;
             row.appendChild(node);

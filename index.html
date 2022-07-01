@@ -8,12 +8,35 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="options">
-        <input type="range" placeholder="16" min="16" max = "100">
-        <button id="btn1">Submit</button>
-    </div>
-    <div class="container">
+    <h1>Etch a Sketch</h1>
+    <div class="body">
+        <div class="options">
+            <div class="size">
+                <span>Grid Size</span>
+                <input type="range" id = 'size' placeholder="16" min="16" max = "100" />
+                <br>
+                <button id="btn1">Submit</button>
+            </div>
+            <div class="color-picker">
+                <span>Color picker</span>
+                <input type="color" />
+            </div>
+            <div>
+                <button>Random color</button>
+            </div>
+            <div>
+                <button>Erasor</button>
+            </div>
+            <div>
+                <button>Grid lines</button>
+            </div>
+            <div>
+                <button>Clear</button>
+            </div>
+        </div>
+        <div class="container">
 
+        </div>
     </div>
     <script src="script.js"></script> 
 </body>
