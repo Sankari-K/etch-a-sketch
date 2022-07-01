@@ -5,6 +5,8 @@ containerDiv.style.height = `${LENGTH}px`;
 containerDiv.style.width = `${LENGTH}px`;
 
 let canvasColor = "#3caea3";
+let BACKGROUND = "#FFE4C4";
+
 let dimensions = 16;
 createGrid();
 hover();
@@ -31,6 +33,7 @@ colorPicker.addEventListener('input', function() {
 // Erasor functionality
 erasor = document.querySelector('.btn.b');
 erasor.addEventListener('click', function() {
+    console.log('huhuh');
     canvasColor = "bisque";
 })
 
@@ -42,6 +45,19 @@ clear.addEventListener('click', function() {
         div.style.backgroundColor = "bisque";
 });
 });
+
+// Random color functionality
+random = document.querySelector('.btn.d');
+random.addEventListener('click', randomColor);
+function randomColor() {
+        let divs = document.querySelectorAll('.element');
+        divs.forEach((div) => {
+        div.addEventListener('mouseover', () => {
+            // canvasColor
+            div.style.backgroundColor  = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+        });
+    })
+};
 
 
 function createGrid() {
@@ -67,6 +83,7 @@ function hover() {
     let divs = document.querySelectorAll('.element');
     divs.forEach((div) => {
     div.addEventListener('mouseover', () => {
+        console.log(`here! ${canvasColor}`);
         div.style.backgroundColor = canvasColor;
     });
 })};
