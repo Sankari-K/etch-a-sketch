@@ -1,12 +1,11 @@
 // creating the square grid
 let containerDiv = document.querySelector('.container');
-const LENGTH = 600;
+const LENGTH = 650;
 containerDiv.style.height = `${LENGTH}px`;
 containerDiv.style.width = `${LENGTH}px`;
 
 let canvasColor = "#3caea3";
-let BACKGROUND = "#FFE4C4";
-let FOREGROUND = "#3caea3";
+let BACKGROUND = "#ffccac77";
 
 let dimensions = 16;
 createGrid();
@@ -53,6 +52,24 @@ clear.addEventListener('click', function() {
 });
 });
 
+
+// Grid lines functionality
+gridLines = document.querySelector('.btn.e');
+gridLines.addEventListener('click', function() {
+    console.log('hey');
+    let divs = document.querySelectorAll('.element');
+    divs.forEach((div) => {
+       div.style.margin = "1px";
+       div.style.height = `${(LENGTH - dimensions)/dimensions}px`;
+       div.style.width = `${(LENGTH - dimensions)/dimensions}px`;
+    });
+
+    let head = document.querySelectorAll(".header");
+    head.forEach((row) => {
+        row.style.height = `${LENGTH/dimensions}px`;
+    })
+})
+
 // Random color functionality
 random = document.querySelector('.btn.d');
 random.addEventListener('click', randomColor);
@@ -75,6 +92,7 @@ function createGrid() {
         let row = document.createElement("div");
         containerDiv.appendChild(row);
         row.style.display = 'flex';
+        row.classList.add("header");
         for (let j = 0; j < dimensions; j++) {
 
             const node = document.createElement("div");
@@ -92,7 +110,6 @@ function hover() {
     let divs = document.querySelectorAll('.element');
     divs.forEach((div) => {
     div.addEventListener('mouseover', () => {
-            console.log(`here! ${canvasColor} `);
             div.style.backgroundColor = canvasColor;
     });
 })}; 
