@@ -3,10 +3,11 @@
 * {
     font-family: 'Poppins', sans-serif;
     font-size: 20px;
+    color: #ffffff; 
 }
 
 h1 {
-    color: #ffccac;
+    color: #e7926c;
     text-align: center;
     font-size: 35px;
 }
@@ -28,5 +29,32 @@ h1 {
 }
 
 .container {
-    border: 2px solid;
+    border: 2px solid #e7926c;
+}
+
+.but-div, .color-picker, .erasor {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}  
+
+button {
+    background-color: #eec1a4;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 5px;
+    transition: all 0.5s ease 0s;
+}
+
+button:hover {
+    color: #e7926c;
+    transform: scale(1.2) perspective(1px);
+}
+input {
+    margin-bottom: 5px;
+}
+
+.options {
+    background-color: #79a6a3;
+    padding: 20px;
 }

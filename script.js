@@ -1,11 +1,11 @@
 // creating the square grid
 let containerDiv = document.querySelector('.container');
-const LENGTH = 650;
+const LENGTH = 600;
 containerDiv.style.height = `${LENGTH}px`;
 containerDiv.style.width = `${LENGTH}px`;
 
 let canvasColor = "#3caea3";
-let BACKGROUND = "#ffccac77";
+let BACKGROUND = "#f9e5d7";
 
 let dimensions = 16;
 createGrid();
