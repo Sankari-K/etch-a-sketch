@@ -1,30 +1,31 @@
 // creating the square grid
 let containerDiv = document.querySelector('.container');
+let canvasColor = "#3caea3";
+let BACKGROUND = "#f9e5d7";
+let dimensions = 16;
+
 const LENGTH = 600;
 containerDiv.style.height = `${LENGTH}px`;
 containerDiv.style.width = `${LENGTH}px`;
 
-let canvasColor = "#3caea3";
-let BACKGROUND = "#f9e5d7";
-
-let dimensions = 16;
 createGrid();
 hover();
 
-let submit = document.querySelector('button.btn.a');
-submit.addEventListener('click', () => {
+sizeChange = document.querySelector('input#size');
+sizeChange.addEventListener("change", () => {
     // Erase previous grid if exists
     while (containerDiv.firstChild) {
         containerDiv.removeChild(containerDiv.lastChild);
       }
     // Create new grid
-    dimensions = document.querySelector('input#size').value;
+    dimensions = sizeChange.value;
     gridSize = document.querySelector('.grid-size');
-    gridSize.innerText = `Grid size: ${dimensions} x ${dimensions} `
+    gridSize.innerText = `Grid size: ${dimensions} x ${dimensions} `;
     createGrid();
     // Hover over the cells
-   hover(); 
-});
+    hover(); 
+})
+
 
 // Color picker functionality
 colorPicker = document.querySelector('.color-picker input');
@@ -102,11 +103,9 @@ function createGrid() {
         row.style.display = 'flex';
         row.classList.add("header");
         for (let j = 0; j < dimensions; j++) {
-
             const node = document.createElement("div");
-            node.style.backgroundColor = BACKGROUND;//"bisque"; /*IMP!*/
+            node.style.backgroundColor = BACKGROUND;
             node.classList.add('element');
-            //node.style.borderStyle = "solid";
             node.style.height = `${LENGTH/dimensions}px`;
             node.style.width = `${LENGTH/dimensions}px`;
             row.appendChild(node);
@@ -122,6 +121,3 @@ function hover() {
     });
 })}; 
 
-
-
-// div.removeEventListener('mouseover', excHover);
