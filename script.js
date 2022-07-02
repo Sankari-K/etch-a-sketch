@@ -58,16 +58,26 @@ clear.addEventListener('click', function() {
 gridLines = document.querySelector('.btn.e');
 gridLines.addEventListener('click', function() {
     let divs = document.querySelectorAll('.element');
-    divs.forEach((div) => {
-       div.style.margin = "1px";
-       div.style.height = `${(LENGTH - dimensions)/dimensions}px`;
-       div.style.width = `${(LENGTH - dimensions)/dimensions}px`;
-    });
-
-    let head = document.querySelectorAll(".header");
-    head.forEach((row) => {
-        row.style.height = `${LENGTH/dimensions}px`;
-    })
+    if (divs[0].style.height == `${(LENGTH - dimensions)/dimensions}px`) {
+        divs.forEach((div) => {
+        div.style.height = `${LENGTH/dimensions}px`;
+        div.style.width = `${LENGTH/dimensions}px`;
+        div.style.margin = 0;
+        })
+    }
+    else {
+        divs.forEach((div) => {
+            div.style.margin = "1px";
+            div.style.height = `${(LENGTH - dimensions)/dimensions}px`;
+            div.style.width = `${(LENGTH - dimensions)/dimensions}px`;
+         }); 
+         
+         let head = document.querySelectorAll(".header");
+         head.forEach((row) => {
+             row.style.height = `${LENGTH/dimensions}px`;
+         }) 
+    }
+    
 })
 
 // Random color functionality
