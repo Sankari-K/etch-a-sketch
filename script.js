@@ -59,13 +59,16 @@ clear.addEventListener('click', function() {
 gridLines = document.querySelector('.btn.e');
 gridLines.addEventListener('click', function() {
     let divs = document.querySelectorAll('.element');
-    if (divs[0].style.height == `${(LENGTH - dimensions)/dimensions}px`) {
+
+    // If there is a grid, remove it
+    if ((LENGTH - dimensions)/dimensions - parseInt(divs[0].style.height, 10) > -0.5) {
         divs.forEach((div) => {
         div.style.height = `${LENGTH/dimensions}px`;
         div.style.width = `${LENGTH/dimensions}px`;
         div.style.margin = 0;
         })
     }
+    // If there is no grid, add it
     else {
         divs.forEach((div) => {
             div.style.margin = "1px";
