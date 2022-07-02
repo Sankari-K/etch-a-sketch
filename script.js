@@ -19,6 +19,8 @@ submit.addEventListener('click', () => {
       }
     // Create new grid
     dimensions = document.querySelector('input#size').value;
+    gridSize = document.querySelector('.grid-size');
+    gridSize.innerText = `Grid size: ${dimensions} x ${dimensions} `
     createGrid();
     // Hover over the cells
    hover(); 
@@ -39,7 +41,6 @@ erasor.addEventListener('click', function() {
     let divs = document.querySelectorAll('.element');
     divs.forEach((div) => {
     div.removeEventListener('mouseover', excHover); });
-    console.log('huhuh');
     canvasColor = BACKGROUND;
 })
 
@@ -56,7 +57,6 @@ clear.addEventListener('click', function() {
 // Grid lines functionality
 gridLines = document.querySelector('.btn.e');
 gridLines.addEventListener('click', function() {
-    console.log('hey');
     let divs = document.querySelectorAll('.element');
     divs.forEach((div) => {
        div.style.margin = "1px";
@@ -82,12 +82,10 @@ function randomColor() {
 };
 
 function excHover(evt) {
-    console.log(evt.path[0]);
-    evt.path[0].style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
+    evt.composedPath()[0].style.backgroundColor = `#${Math.floor(Math.random()*16777215).toString(16)}`;
 }
 
 function createGrid() {
-    console.log(dimensions);
     for(let i = 0; i < dimensions; i++) {
         let row = document.createElement("div");
         containerDiv.appendChild(row);
