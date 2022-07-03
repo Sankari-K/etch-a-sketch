@@ -11,6 +11,7 @@ containerDiv.style.width = `${LENGTH}px`;
 createGrid();
 hover();
 
+// Adding grid using input
 sizeChange = document.querySelector('input#size');
 sizeChange.addEventListener("change", () => {
     // Erase previous grid if exists
@@ -25,7 +26,11 @@ sizeChange.addEventListener("change", () => {
     // Hover over the cells
     hover(); 
 })
-
+// Make grid dimension dynamic 
+sizeChange.addEventListener("input", () => { 
+    gridSize = document.querySelector('.grid-size');
+    gridSize.innerText = `Grid size: ${sizeChange.value} x ${sizeChange.value} `;
+})
 
 // Color picker functionality
 colorPicker = document.querySelector('.color-picker input');
@@ -59,9 +64,11 @@ clear.addEventListener('click', function() {
 gridLines = document.querySelector('.btn.e');
 gridLines.addEventListener('click', function() {
     let divs = document.querySelectorAll('.element');
+    //console.log(parseFloat(divs[0].style.height), (LENGTH - dimensions)/dimensions);
 
     // If there is a grid, remove it
-    if ((LENGTH - dimensions)/dimensions - parseInt(divs[0].style.height, 10) > -0.5) {
+    if ((LENGTH - dimensions)/dimensions - parseFloat(divs[0].style.height, 10) > -0.05) {
+        //console.log("Code will remove grid");
         divs.forEach((div) => {
         div.style.height = `${LENGTH/dimensions}px`;
         div.style.width = `${LENGTH/dimensions}px`;
@@ -70,6 +77,7 @@ gridLines.addEventListener('click', function() {
     }
     // If there is no grid, add it
     else {
+        //console.log("Code will add grid");
         divs.forEach((div) => {
             div.style.margin = "1px";
             div.style.height = `${(LENGTH - dimensions)/dimensions}px`;
