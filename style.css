@@ -45,13 +45,14 @@ button {
     border: 2px solid white;
     border-radius: 5px;
     padding: 5px;
-    transition: all 0.5s ease 0s;
+    transition: all 0.3s ease 0s;
 }
 
 button:hover {
     color: #e7926c;
     transform: scale(1.2) perspective(1px);
 }
+
 input {
     margin-bottom: 5px;
 }
